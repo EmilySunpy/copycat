@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import random
+import glob
 from enum import Enum
 from flags import Flags
 
@@ -44,8 +45,12 @@ class Network(object):
     def Add(self, data): # Add a new node to the network
         pass
     
-    def Del(self, data): # Delete a node and its connections from the network
-        pass
+    def Del(self, index): # Delete a node and its connections from the network
+        try:
+            glob.sql.cursor().execute("DELETE FROM connections WHERE FROM_UUID = {0} OR TO_UUID = {0}".format(index))
+            glob.sql.cursor().execute("DELETE FROM nodes WHERE UUID = {0}".format(index))
+        except Exception:
+            print("Unable to delete node")
 
     def Fit(self, data, value): # Set a fitness value onto a node
         pass
