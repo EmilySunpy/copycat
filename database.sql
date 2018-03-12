@@ -7,7 +7,7 @@ CREATE TABLE `nodes` (
   `UUID` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `value` blob NOT NULL
+  `value` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
